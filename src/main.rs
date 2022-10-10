@@ -1,18 +1,23 @@
-
+/*In this example, we changed the function parameter from String reference (s: $String) 
+to using the slice for the string (s: *str) which is the data type for string literals as well*/
 fn main() { // this is a simple exampe to split a string and return first word in string
-    let ss = String::from("hello world!");
+    let my_string = String::from("hello world!");
 
-    let first_word = first_word(&ss);
+    let word = first_word(&my_string[..]);
+    println!("the word is: {}",word);
 
-    let second_word = second_word(&ss);
+    let my_string_literal = "hello world!";
+    let word = first_word(&my_string_literal[..]);
+    println!("the word is: {}",word);
 
-    println!("the first word in the above string is: {}",first_word);
-    
-    println!("the second word in the above string is: {}", second_word);
+    let word = first_word(my_string_literal);
+    println!("the word is: {}",word);
+
+    println!("the second word is: {}", second_word(my_string_literal));
     
 }
 
-fn first_word(s: &String) -> &str {  // this function takes a reference and returns a reference (borrower)
+fn first_word(s: &str) -> &str {  // this function takes a reference and returns a reference (borrower)
     let bytes = s.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate() { //iterate through the bytes and add them into a tuple
@@ -24,7 +29,7 @@ fn first_word(s: &String) -> &str {  // this function takes a reference and retu
     &s[..]
 }
 
-fn second_word(s: &String) -> &str {
+fn second_word(s: &str) -> &str {
     let bytes = s.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate() {
