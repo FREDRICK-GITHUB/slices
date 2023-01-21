@@ -1,5 +1,8 @@
 
 fn main() { 
+   /*A string slice will have a pointer to the start of the slice, and number of bits, 
+   doesn't know anything else to do with the string*/
+
    //This is a string. Stored on heap because size can expand or shrink during runtime
    let string_one = String::from("127.0.0.1:8080");
 
